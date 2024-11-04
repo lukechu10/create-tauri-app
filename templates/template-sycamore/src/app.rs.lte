@@ -25,7 +25,7 @@ pub fn App() -> View {
         spawn_local_scoped(async move {
             // Learn more about Tauri commands at {% if v2 %}https://tauri.app/develop/calling-rust/{% else %}https://v1.tauri.app/v1/guides/features/command{% endif %}
             let args = serde_wasm_bindgen::to_value(&GreetArgs {
-				name: &name.get()
+				name: &name.get_clone()
 			})
 			.unwrap();
             let new_msg = invoke("greet", args).await;
